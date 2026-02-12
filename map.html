@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tubig Patrol - Interactive Map</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder@2.4.1/dist/Control.Geocoder.css" />
+</head>
+<body class="map-page">
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="container">
+            <a href="index.html" class="logo-link">
+                <div class="logo">
+                    <h1>Tubig Patrol</h1>
+                    <p class="tagline">Area Flood Detection and Monitoring Website • Prototype</p>
+                </div>
+            </a>
+            <nav class="nav">
+                <a href="map.html">Map</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#how-it-works">How It Works</a>
+                <a href="index.html#symbols">Symbols</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Map Container -->
+    <div id="map" class="map-container"></div>
+
+    <!-- Search Box (Floating) -->
+    <div class="map-search-overlay">
+        <div class="search" id="search">
+            <div class="search__bar" role="search">
+                <span class="search__icon" aria-hidden="true">⌕</span>
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    class="search__input" 
+                    placeholder="Search city, barangay, landmark…"
+                    autocomplete="off"
+                >
+                <button id="searchButton" class="search__btn">Search</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Legend (Optional) -->
+    <div class="map-legend">
+        <h3>Flood Levels</h3>
+        <div class="legend-item">
+            <span class="legend-color" style="background-color: #808080;"></span>
+            <span>No Data</span>
+        </div>
+        <div class="legend-item">
+            <span class="legend-color" style="background-color: #4CAF50;"></span>
+            <span>Low</span>
+        </div>
+        <div class="legend-item">
+            <span class="legend-color" style="background-color: #FFC107;"></span>
+            <span>Moderate</span>
+        </div>
+        <div class="legend-item">
+            <span class="legend-color" style="background-color: #FF9800;"></span>
+            <span>High</span>
+        </div>
+        <div class="legend-item">
+            <span class="legend-color" style="background-color: #F44336;"></span>
+            <span>Critical</span>
+        </div>
+    </div>
+
+    <!-- Leaflet -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-control-geocoder@2.4.1/dist/Control.Geocoder.js"></script>
+    
+    <!-- Map Script -->
+    <script src="js/main.js"></script>
+    <script src="js/map.js"></script>
+    <!-- Include dynamic marker script here (sensor data handler) -->
+    <script src="js/dynamic-marker.js"></script>
+    <script src="cloud-fetch.js"></script>
+</body>
+</html>

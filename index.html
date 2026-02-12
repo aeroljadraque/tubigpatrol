@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tubig Patrol - Water Flood Detection & Monitoring</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Background -->
+    <div class="bg">
+        <div class="bg__glow"></div>
+        <div class="bg__grid"></div>
+        <div class="waves" aria-hidden="true">
+            <div class="wave wave--1"></div>
+            <div class="wave wave--2"></div>
+            <div class="wave wave--3"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="container">
+            <div class="logo">
+                <h1>Tubig Patrol</h1>
+                <p class="tagline">Area Flood Detection and Monitoring Website • Prototype</p>
+            </div>
+            <nav class="nav">
+                <a href="map.html">Map</a>
+                <a href="#about">About</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#symbols">Symbols</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main" role="main">
+        <!-- Hero Section with Search Button -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h2>Find flood‑affected areas—fast.</h2>
+                    <p>Search for a location to explore flood extent, real-time data, and interactive map overlays. Get critical insights into flood-affected areas with our monitoring system.</p>
+                    <a href="map.html" class="search-button">View Interactive Map</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <h2>Built for flood insight</h2>
+                <div class="insights-grid">
+                    <div class="insight-card">
+                        <h3>Location-first UX</h3>
+                        <p>Intuitive search and navigation designed around finding flood-affected areas quickly and efficiently.</p>
+                    </div>
+                    <div class="insight-card">
+                        <h3>Flood-themed visuals</h3>
+                        <p>Modern "water + data" aesthetic with subtle wave motion and depth to match our monitoring mission.</p>
+                    </div>
+                    <div class="insight-card">
+                        <h3>Real-time data</h3>
+                        <p>Live sensor feeds and continuous monitoring provide up-to-the-minute flood level information.</p>
+                    </div>
+                    <div class="insight-card">
+                        <h3>Easy integration</h3>
+                        <p>Seamlessly connect your flood data API and sensor networks without any design modifications needed.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section id="how-it-works" class="how-it-works">
+            <div class="container">
+                <h2>How it works</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Search a location</h3>
+                        <p>Enter a city, barangay, or landmark to find flood-affected areas across the region.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>View on map</h3>
+                        <p>Explore the interactive map with flood extent overlays, markers, and location data.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Get insights</h3>
+                        <p>Access real-time flood data, risk assessments, and detailed monitoring reports.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Flood Level Symbols Section -->
+        <section id="symbols" class="symbols">
+            <div class="container">
+                <h2>Water Level Indicators</h2>
+                <p class="section-subtitle">Map icons represent flood severity—from no data to critical. Use these to quickly assess flood conditions in any area.</p>
+                
+                <div class="symbols-grid">
+                    <div class="symbol-card">
+                        <div class="symbol-icon" style="background-color: rgba(128, 128, 128, 0.1);">●</div>
+                        <h3>No Data</h3>
+                        <p>No flood data available for this location. Data collection in progress.</p>
+                    </div>
+
+                    <div class="symbol-card">
+                        <div class="symbol-icon" style="background-color: rgba(76, 175, 80, 0.1);">●</div>
+                        <h3>Low</h3>
+                        <p>Water levels are elevated but manageable. Minor monitoring recommended.</p>
+                    </div>
+
+                    <div class="symbol-card">
+                        <div class="symbol-icon" style="background-color: rgba(255, 193, 7, 0.1);">●</div>
+                        <h3>Moderate</h3>
+                        <p>Water levels are significantly raised. Prepare preventive measures.</p>
+                    </div>
+
+                    <div class="symbol-card">
+                        <div class="symbol-icon" style="background-color: rgba(255, 152, 0, 0.1);">●</div>
+                        <h3>High</h3>
+                        <p>Water levels are dangerously high. Immediate action recommended.</p>
+                    </div>
+
+                    <div class="symbol-card">
+                        <div class="symbol-icon" style="background-color: rgba(244, 67, 54, 0.1);">●</div>
+                        <h3>Critical</h3>
+                        <p>Severe flooding detected. Evacuate immediately if instructed.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div>
+                <p style="font-weight: 700; margin-bottom: 4px;">Tubig Patrol</p>
+                <p>Area Flood Detection and Monitoring Website • Prototype</p>
+            </div>
+            <p style="text-align: right;">Tubig Patrol © 2026 Mitochondria. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="cloud-fetch.js"></script>
+</body>
+</html>
