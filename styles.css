@@ -519,6 +519,12 @@ body.map-page .nav a:first-child:hover {
     color: white;
 }
 
+.symbol-icon img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
 .symbol-card h3 {
     font-weight: 700;
     font-size: 18px;
@@ -735,6 +741,12 @@ body.map-page {
     height: 16px;
     border-radius: 50%;
     border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.legend-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
 }
 
 /* ============================================

@@ -25,12 +25,12 @@ function createFloodMarker(lat, lng, level = 'normal') {
         map.removeLayer(floodMarker);
     }
 
-    const markerColor = getMarkerColor(level);
+    const markerImage = getMarkerImage(level);
     
-    // Create custom icon
+    // Create custom icon with PNG image
     const customIcon = L.divIcon({
-        html: `<div class="flood-marker" style="background-color: ${markerColor}; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.3);"></div>`,
-        iconSize: [30, 30],
+        html: `<div class="flood-marker"><img src="${markerImage}" alt="${level}" style="width: 40px; height: 40px; object-fit: contain;"></div>`,
+        iconSize: [50, 50],
         className: 'flood-marker-icon'
     });
 
@@ -41,7 +41,7 @@ function createFloodMarker(lat, lng, level = 'normal') {
         <div class="marker-popup">
             <strong>Holy Trinity Academy, Manila</strong>Calabash Road, Barangay 539, Sampaloc, Manila<br>
             Coordinates: ${lat.toFixed(4)}°N, ${lng.toFixed(4)}°E<br>
-            Water Level: <span style="color: ${markerColor}; font-weight: bold;">${level.toUpperCase()}</span>
+            Water Level: <span style="font-weight: bold;">${level.toUpperCase()}</span>
         </div>
     `;
 
@@ -62,6 +62,19 @@ function getMarkerColor(level) {
     return colors[level.toLowerCase()] || colors['nodata'];
 }
 
+// Get PNG image path based on water level
+function getMarkerImage(level) {
+    const images = {
+        'nodata': 'NO DATA.png',
+        'low': 'LOW.png',
+        'moderate': 'MODERATE.png',
+        'high': 'HIGH.png',
+        'critical': 'CRITICAL.png',
+        'normal': 'NO DATA.png'
+    };
+    return images[level.toLowerCase()] || images['nodata'];
+}
+
 // Create initial marker
 createFloodMarker(TARGET_LAT, TARGET_LNG, 'nodata');
 
@@ -72,7 +85,6 @@ style.textContent = `
         filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
     }
     .flood-marker {
-        border-radius: 50%;
         width: 100%;
         height: 100%;
         display: flex;
@@ -177,11 +189,11 @@ searchInput.addEventListener('keypress', (e) => {
 // This function will be called by the sensor data handler
 window.updateFloodMarker = function(level) {
     if (floodMarker) {
-        // Update marker color
-        const markerColor = getMarkerColor(level);
+        // Update marker with PNG image
+        const markerImage = getMarkerImage(level);
         floodMarker.setIcon(L.divIcon({
-            html: `<div class="flood-marker" style="background-color: ${markerColor}; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.3);"></div>`,
-            iconSize: [30, 30],
+            html: `<div class="flood-marker"><img src="${markerImage}" alt="${level}" style="width: 40px; height: 40px; object-fit: contain;"></div>`,
+            iconSize: [50, 50],
             className: 'flood-marker-icon'
         }));
 
@@ -190,7 +202,7 @@ window.updateFloodMarker = function(level) {
             <div class="marker-popup">
                 <strong>Holy Trinity Academy, Manila</strong>Calabash Road, Barangay 539, Sampaloc, Manila 1008<br>
                 Coordinates: ${TARGET_LAT.toFixed(4)}°N, ${TARGET_LNG.toFixed(4)}°E<br>
-                Water Level: <span style="color: ${markerColor}; font-weight: bold;">${level.toUpperCase()}</span>
+                Water Level: <span style="font-weight: bold;">${level.toUpperCase()}</span>
             </div>
         `;
         floodMarker.setPopupContent(popupContent);
