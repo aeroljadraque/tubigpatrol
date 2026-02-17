@@ -218,14 +218,33 @@ window.updateFloodMarker = function(level, timestamp = null) {
             className: 'flood-marker-icon'
         }));
 
+        // Color coding for flood level text
+        const colorMap = {
+            'nodata': '#808080',
+            'low': '#4CAF50',
+            'moderate': '#FFC107',
+            'high': '#FF9800',
+            'critical': '#F44336'
+        };
+        const levelKey = (level || 'nodata').toLowerCase();
+        const displayLevel = (levelKey === 'nodata') ? 'NO DATA' : level.toUpperCase();
+        const levelColor = colorMap[levelKey] || colorMap['nodata'];
+
+        // Format timestamp for display
+        let tsDisplay = null;
+        if (timestamp) {
+            const maybe = (timestamp instanceof Date) ? timestamp : (typeof timestamp === 'number' ? new Date(timestamp) : new Date(timestamp));
+            if (!Number.isNaN(maybe.getTime())) {
+                tsDisplay = maybe.toLocaleString();
+            }
+        }
+
         // Update popup
-        const tsDisplay = formatTimestampForDisplay(timestamp);
-        const displayLevel = (level && String(level).toLowerCase() === 'nodata') ? 'NO DATA' : String(level).toUpperCase();
         const popupContent = `
             <div class="marker-popup">
                 <strong>Holy Trinity Academy, Manila</strong>Calabash Road, Barangay 539, Sampaloc, Manila 1008<br>
                 Coordinates: ${TARGET_LAT.toFixed(4)}°N, ${TARGET_LNG.toFixed(4)}°E<br>
-                Water Level: <span style="font-weight: bold;">${displayLevel}</span>
+                Water Level: <span style="font-weight: bold; color: ${levelColor};">${displayLevel}</span>
                 ${tsDisplay ? `<div class="marker-timestamp">Last update: ${tsDisplay}</div>` : `<div class="marker-timestamp">Last update: No data</div>`}
             </div>
         `;

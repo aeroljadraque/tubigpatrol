@@ -86,5 +86,6 @@
     <!-- Include dynamic marker script here (sensor data handler) -->
     <script src="dynamic-marker.js"></script>
     <script src="cloud-fetch.js"></script>
-</body>
+    <!-- cloud-fetch.js must be last to ensure updateFloodMarker is defined -->
+    <script src="cloud-fetch.js"></script>
 </html>
