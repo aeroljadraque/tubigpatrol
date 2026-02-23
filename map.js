@@ -57,7 +57,7 @@ function createFloodMarker(lat, lng, level = 'normal', timestamp = null) {
             <strong>Holy Trinity Academy, Manila</strong>Calabash Road, Barangay 539, Sampaloc, Manila<br>
             Coordinates: ${lat.toFixed(4)}°N, ${lng.toFixed(4)}°E<br>
             Water Level: <span style="font-weight: bold; color: ${levelColor};">${displayLevel}</span>
-            ${tsDisplay ? `<div class="marker-timestamp">Last update: ${tsDisplay}</div>` : `<div class="marker-timestamp">Last update: No data</div>`}
+            ${tsDisplay ? `<div class="marker-timestamp">Last updated: ${tsDisplay}</div>` : `<div class="marker-timestamp">Last updated: No data</div>`}
         </div>
     `;
 
@@ -245,7 +245,7 @@ window.updateFloodMarker = function(level, timestamp = null) {
                 <strong>Holy Trinity Academy, Manila</strong>Calabash Road, Barangay 539, Sampaloc, Manila 1008<br>
                 Coordinates: ${TARGET_LAT.toFixed(4)}°N, ${TARGET_LNG.toFixed(4)}°E<br>
                 Water Level: <span style="font-weight: bold; color: ${levelColor};">${displayLevel}</span>
-                ${tsDisplay ? `<div class="marker-timestamp">Last update: ${tsDisplay}</div>` : `<div class="marker-timestamp">Last update: No data</div>`}
+                ${tsDisplay ? `<div class="marker-timestamp">Last updated: ${tsDisplay}</div>` : `<div class="marker-timestamp">Last updated: No data</div>`}
             </div>
         `;
         floodMarker.setPopupContent(popupContent);
