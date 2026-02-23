@@ -24,9 +24,20 @@ async function fetchFloodLevel() {
   try {
     const response = await fetch(PROXY_URL);
     const data = await response.json();
-    const levelString = convertFloodLevel(Number(data.level));
+
+    // ✅ NEW: treat offline OR null/undefined level as NO DATA
+    const isOffline = data && (data.offline === true);
+    const levelValue = (data && data.level !== null && data.level !== undefined)
+      ? Number(data.level)
+      : null;
+
+    const levelString = (isOffline || levelValue === null || Number.isNaN(levelValue))
+      ? "nodata"
+      : convertFloodLevel(levelValue);
+
     const ts = extractTimestamp(data);
-    console.log("Flood Level:", data.level, "→", levelString, 'Timestamp:', ts);
+
+    console.log("Flood Level:", data.level, "offline:", data.offline, "→", levelString, "Timestamp:", ts);
     window.updateFloodMarker(levelString, ts);
   } catch (err) {
     console.error("Failed to fetch flood level:", err);
