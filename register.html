@@ -1,68 +1,90 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register for Flood Alerts</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register for Flood Alerts</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Background -->
-    <div class="bg">
-        <div class="bg__glow"></div>
-        <div class="bg__grid"></div>
-        <div class="waves" aria-hidden="true">
-            <div class="wave wave--1"></div>
-            <div class="wave wave--2"></div>
-            <div class="wave wave--3"></div>
+  <!-- Background -->
+  <div class="bg">
+    <div class="bg__glow"></div>
+    <div class="bg__grid"></div>
+    <div class="waves" aria-hidden="true">
+      <div class="wave wave--1"></div>
+      <div class="wave wave--2"></div>
+      <div class="wave wave--3"></div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header" role="banner">
+    <div class="container">
+      <a href="index.html" class="logo-link">
+        <div class="logo">
+          <h1>Tubig Patrol</h1>
+          <p class="tagline">Area Flood Detection and Monitoring Website • Prototype</p>
         </div>
+      </a>
+      <nav class="nav">
+        <a href="map.html">Map</a>
+        <a href="register.html">Register</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#how-it-works">How It Works</a>
+        <a href="index.html#symbols">Symbols</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <div class="container">
+      <section class="card register-card">
+        <h2>Register for Flood Water Level Alerts</h2>
+
+        <form id="register-form" class="register-form">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required class="form-input">
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Mobile Number</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              pattern="[0-9]{11}"
+              placeholder="09XXXXXXXXX"
+              required
+              class="form-input"
+            >
+          </div>
+
+          <!-- ✅ NEW: Station dropdown (pseudo button / single option) -->
+          <div class="form-group">
+            <label for="station">Tubig Patrol Station</label>
+            <select id="station" name="station" required class="form-input">
+              <option value="" selected disabled>Select a location</option>
+              <option value="Holy Trinity Academy, Manila">Holy Trinity Academy, Manila</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn register-btn">Register</button>
+        </form>
+
+        <div id="message" class="register-message"></div>
+      </section>
     </div>
 
-    <!-- Header -->
-    <header class="header" role="banner">
-        <div class="container">
-            <a href="index.html" class="logo-link">
-                <div class="logo">
-                    <h1>Tubig Patrol</h1>
-                    <p class="tagline">Area Flood Detection and Monitoring Website • Prototype</p>
-                </div>
-            </a>
-            <nav class="nav">
-                <a href="map.html">Map</a>
-                <a href="register.html">Register</a>
-                <a href="index.html#about">About</a>
-                <a href="index.html#how-it-works">How It Works</a>
-                <a href="index.html#symbols">Symbols</a>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Main Content -->
-    <main>
-        <div class="container">
-            <section class="card register-card">
-                <h2>Register for Flood Water Level Alerts</h2>
-                <form id="register-form" class="register-form">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required class="form-input">
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Mobile Number</label>
-                        <input type="tel" id="phone" name="phone" pattern="[0-9]{11}" placeholder="09XXXXXXXXX" required class="form-input">
-                    </div>
-                    <button type="submit" class="btn register-btn">Register</button>
-                </form>
-                <div id="message" class="register-message"></div>
-            </section>
-        </div>
-    </main>
     <style>
-    .register-card {
+      .register-card {
         margin-top: 110px;
         max-width: 420px;
         margin-left: auto;
@@ -72,30 +94,30 @@
         border-radius: var(--radius);
         box-shadow: 0 8px 32px rgba(51,214,255,0.08);
         border: 1px solid rgba(255,255,255,0.12);
-    }
-    .register-card h2 {
+      }
+      .register-card h2 {
         font-size: 22px;
         font-weight: 700;
         margin-bottom: 24px;
         color: var(--accent2);
         text-align: center;
-    }
-    .register-form {
+      }
+      .register-form {
         display: flex;
         flex-direction: column;
         gap: 18px;
-    }
-    .form-group {
+      }
+      .form-group {
         display: flex;
         flex-direction: column;
         gap: 6px;
-    }
-    .form-group label {
+      }
+      .form-group label {
         font-size: 14px;
         color: var(--muted);
         font-weight: 500;
-    }
-    .form-input {
+      }
+      .form-input {
         padding: 12px 14px;
         border-radius: 14px;
         border: 1px solid rgba(51,214,255,0.18);
@@ -105,12 +127,30 @@
         font-family: inherit;
         transition: box-shadow 0.3s, border-color 0.3s;
         outline: none;
-    }
-    .form-input:focus {
+      }
+      .form-input:focus {
         box-shadow: 0 0 0 2px rgba(51,214,255,0.18);
         border-color: var(--accent);
-    }
-    .register-btn {
+      }
+
+      /* ✅ Small tweak so <select> matches the inputs nicely */
+      select.form-input {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        cursor: pointer;
+        padding-right: 40px;
+        background-image:
+          linear-gradient(45deg, transparent 50%, rgba(255,255,255,0.75) 50%),
+          linear-gradient(135deg, rgba(255,255,255,0.75) 50%, transparent 50%);
+        background-position:
+          calc(100% - 20px) 50%,
+          calc(100% - 14px) 50%;
+        background-size: 6px 6px, 6px 6px;
+        background-repeat: no-repeat;
+      }
+
+      .register-btn {
         background: linear-gradient(135deg, var(--accent), var(--accent2));
         color: #00131c;
         border: 1px solid rgba(255,255,255,0.14);
@@ -121,70 +161,76 @@
         font-size: 16px;
         transition: all 0.3s;
         box-shadow: 0 8px 24px rgba(51,214,255,0.12);
-    }
-    .register-btn:hover {
+      }
+      .register-btn:hover {
         filter: brightness(1.05);
-    }
-    .register-message {
+      }
+      .register-message {
         margin-top: 18px;
         color: var(--good);
         font-size: 15px;
         text-align: center;
-    }
-    @media (max-width: 600px) {
+      }
+      @media (max-width: 600px) {
         .register-card {
-            margin-top: 90px;
-            padding: 18px 8px;
+          margin-top: 90px;
+          padding: 18px 8px;
         }
-    }
+      }
     </style>
-    </main>
-<script>
-  const REPLIT_BASE_URL = "https://flood-proxy--aeroljadraque.replit.app";
+  </main>
 
-  const form = document.getElementById("register-form");
-  const messageEl = document.getElementById("message");
+  <script>
+    const REPLIT_BASE_URL = "https://flood-proxy--aeroljadraque.replit.app";
 
-  function setMessage(text, isError = false) {
-    messageEl.textContent = text;
-    messageEl.style.color = isError ? "var(--warn)" : "var(--good)";
-  }
+    const form = document.getElementById("register-form");
+    const messageEl = document.getElementById("message");
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const name = document.getElementById("name").value.trim();
-    const phone = document.getElementById("phone").value.trim();
-
-    // Basic client-side validation (you already use pattern="[0-9]{11}")
-    if (!/^\d{11}$/.test(phone) || !phone.startsWith("09")) {
-      setMessage("Please enter a valid PH mobile number (11 digits, starts with 09).", true);
-      return;
+    function setMessage(text, isError = false) {
+      messageEl.textContent = text;
+      messageEl.style.color = isError ? "var(--warn)" : "var(--good)";
     }
 
-    setMessage("Registering...");
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
 
-    try {
-      const resp = await fetch(`${REPLIT_BASE_URL}/subscribe`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, phone })
-      });
+      const name = document.getElementById("name").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const station = document.getElementById("station").value;
 
-      const data = await resp.json();
-
-      if (!resp.ok) {
-        setMessage(data?.error || "Registration failed.", true);
+      if (!/^\d{11}$/.test(phone) || !phone.startsWith("09")) {
+        setMessage("Please enter a valid PH mobile number (11 digits, starts with 09).", true);
         return;
       }
 
-      setMessage("Registered! You will receive flood water level alerts via SMS.");
-      form.reset();
-    } catch (err) {
-      setMessage("Network error. Please try again.", true);
-      console.error(err);
-    }
-  });
-</script>
+      if (!station) {
+        setMessage("Please select a Tubig Patrol station.", true);
+        return;
+      }
+
+      setMessage("Registering...");
+
+      try {
+        const resp = await fetch(`${REPLIT_BASE_URL}/subscribe`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, phone, station }) // ✅ station included (backend can ignore/store)
+        });
+
+        const data = await resp.json();
+
+        if (!resp.ok) {
+          setMessage(data?.error || "Registration failed.", true);
+          return;
+        }
+
+        setMessage(`Registered! You will receive SMS alerts for: ${station}`);
+        form.reset();
+      } catch (err) {
+        setMessage("Network error. Please try again.", true);
+        console.error(err);
+      }
+    });
+  </script>
 </body>
 </html>
