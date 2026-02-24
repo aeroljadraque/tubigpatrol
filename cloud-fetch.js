@@ -11,7 +11,12 @@ function convertFloodLevel(levelNumber) {
 }
 
 function extractTimestamp(data) {
-  const timeKeys = ['timestamp','time','ts','updated','updatedAt','lastSeen','last_update','measured_at','created_at'];
+  const timeKeys = [
+  'lastUpdate', 'last_updated', 'lastupdated', 'lastUpdated',
+  'timestamp','time','ts',
+  'updated','updatedAt','updated_at',
+  'lastSeen','last_update','measured_at','created_at'
+];
   for (const k of timeKeys) {
     if (data && typeof data === 'object' && k in data && data[k]) {
       return data[k];
