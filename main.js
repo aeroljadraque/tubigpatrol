@@ -2,6 +2,36 @@
 // LANDING PAGE SCRIPTS
 // ============================================
 
+function setupMobileNav() {
+    const nav = document.querySelector('.nav');
+    const toggle = document.querySelector('.nav-toggle');
+
+    if (!nav || !toggle) {
+        return;
+    }
+
+    toggle.addEventListener('click', () => {
+        const isOpen = nav.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            nav.classList.remove('is-open');
+            toggle.setAttribute('aria-expanded', 'false');
+        });
+    });
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 940) {
+            nav.classList.remove('is-open');
+            toggle.setAttribute('aria-expanded', 'false');
+        }
+    });
+}
+
+setupMobileNav();
+
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {

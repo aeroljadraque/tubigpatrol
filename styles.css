@@ -201,10 +201,8 @@ body.map-page .header {
     width: 40px;
     height: 40px;
     border-radius: 14px;
-    background:
-      radial-gradient(circle at 35% 35%, rgba(255,255,255,0.22), transparent 40%),
-      linear-gradient(135deg, rgba(51,214,255,0.95), rgba(43,124,255,0.85));
-    box-shadow: 0 14px 35px rgba(51,214,255,0.18);
+    background: url("TUBIG PATROL LOGO.png") center / cover no-repeat;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
     flex-shrink: 0;
 }
 
@@ -226,6 +224,27 @@ body.map-page .header {
     display: flex;
     gap: 14px;
     align-items: center;
+}
+
+.nav-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    min-width: 50px;
+    min-height: 44px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text);
+    font-size: 22px;
+    line-height: 1;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.nav-toggle:hover {
+    background: rgba(255, 255, 255, 0.12);
 }
 
 .nav a {
@@ -767,13 +786,62 @@ body.map-page {
     height: 24px !important;
 }
 
+/* ===== Sticky Footer Layout Fix ===== */
+
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
 /* ============================================
    RESPONSIVE DESIGN
    ============================================ */
 
 @media (max-width: 940px) {
+    .header .container {
+        position: relative;
+    }
+
+    .nav-toggle {
+        display: inline-flex;
+    }
+
     .nav {
         display: none;
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 0;
+        right: 0;
+        padding: 12px;
+        border-radius: 14px;
+        border: 1px solid rgba(255,255,255,0.16);
+        background: rgba(7, 17, 42, 0.95);
+        backdrop-filter: blur(12px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.28);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+
+    .nav.is-open {
+        display: flex;
+    }
+
+    .nav a,
+    .nav a:first-child {
+        width: 100%;
+        text-align: center;
+        padding: 10px 12px;
+        box-shadow: none;
     }
     
     .steps, .symbols-grid {
@@ -783,8 +851,12 @@ body.map-page {
 
 @media (max-width: 780px) {
     .header .container {
-        flex-direction: column;
-        gap: 15px;
+        flex-direction: row;
+        gap: 12px;
+    }
+
+    .logo .tagline {
+        display: none;
     }
 
     .steps, .symbols-grid {
