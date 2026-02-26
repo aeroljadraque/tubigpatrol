@@ -157,6 +157,7 @@ body.map-page .header {
     display: flex;
     align-items: center;
     width: 100%;
+    z-index: 1000;
 }
 
 .header::before {
@@ -830,6 +831,10 @@ main {
         flex-direction: column;
         align-items: stretch;
         gap: 8px;
+    }
+
+    body.map-page .nav {
+        z-index: 1001;
     }
 
     .nav.is-open {
